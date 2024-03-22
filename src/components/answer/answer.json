@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_answer_answers",
+  "info": {
+    "displayName": "Answer",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Answer": {
+      "type": "string"
+    },
+    "Correct": {
+      "type": "boolean"
+    },
+    "Explanation": {
+      "type": "string"
+    }
+  }
+}
