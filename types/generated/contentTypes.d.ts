@@ -841,13 +841,13 @@ export interface ApiChatChat extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    Question: Attribute.RichText &
+    Avatar: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Avatar: Attribute.Media &
+    Question: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
