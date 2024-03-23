@@ -799,10 +799,36 @@ export interface ApiChatChat extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Title: Attribute.String;
-    Answer: Attribute.DynamicZone<['answer.answer']>;
-    Question: Attribute.RichText;
+    Title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Answer: Attribute.DynamicZone<['answer.answer']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Question: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Avatar: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -810,6 +836,12 @@ export interface ApiChatChat extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::chat.chat', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::chat.chat',
+      'oneToMany',
+      'api::chat.chat'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -824,14 +856,29 @@ export interface ApiCourseCourse extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Title: Attribute.String;
+    Title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     lessons: Attribute.Relation<
       'api::course.course',
       'oneToMany',
       'api::lesson.lesson'
     >;
-    Description: Attribute.RichText;
+    Description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -847,6 +894,12 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::course.course',
+      'oneToMany',
+      'api::course.course'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -861,14 +914,29 @@ export interface ApiLessonLesson extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Title: Attribute.String;
+    Title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     chats: Attribute.Relation<
       'api::lesson.lesson',
       'oneToMany',
       'api::chat.chat'
     >;
-    Text: Attribute.RichText;
+    Text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -884,6 +952,12 @@ export interface ApiLessonLesson extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::lesson.lesson',
+      'oneToMany',
+      'api::lesson.lesson'
+    >;
+    locale: Attribute.String;
   };
 }
 
